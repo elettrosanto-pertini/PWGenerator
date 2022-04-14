@@ -1,6 +1,9 @@
 // Generatore di password in javascript
 
 function generatePassword(chars){
+    //@param chars: Number (int)
+    //@return: string
+
     let result = '';
     const letters= Math.floor(chars*0.3);
     const otherChars= chars-letters;
@@ -28,11 +31,16 @@ function generatePassword(chars){
 }
 
 function carattereRandom(setOfCharacters){
+    //@param: string
+    //@return: string
     const posizione= Math.floor(Math.random()*(setOfCharacters.length));
     return setOfCharacters[posizione];
 }
 
 function randomInsertInto(stringa, carattere){
+    //@param stringa: string
+    //@param carattere: string (length 1, a single char)
+    //@return: string
     const posizione= Math.round(Math.random()*(stringa.length));
     result= stringa.substr(0,posizione)+carattere+stringa.substr(posizione);
     return result;
