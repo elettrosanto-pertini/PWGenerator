@@ -24,7 +24,7 @@ function generatePassword(chars){
     }
 
     for (let i=0; i<specialChars;i++){
-        result = randomInsertInto(result, carattereRandom('!?%&$@#+[]\{\}-_./'));
+        result = randomInsertInto(result, carattereRandom(' !"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'));
     }
 
     return result;
@@ -45,5 +45,43 @@ function randomInsertInto(stringa, carattere){
     result= stringa.substr(0,posizione)+carattere+stringa.substr(posizione);
     return result;
 }
+
+
+
+const alphabet= ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'; 
+const characterOf= new Map();
+const indexOf =new Map();
+
+for(let i=0;i<alphabet.length;i++){
+    indexOf.set(alphabet[i],i);
+}
+for(let i=0;i<alphabet.length;i++){
+    characterOf.set(i,alphabet[i]);
+}
+
+
+function crypt(stringa, key){
+    let cripted='';
+    for (let i=0;i<stringa.length;i++){
+        let sum=(indexOf.get(stringa[i])+indexOf.get(key[i%key.length]))%alphabet.length;
+        cripted=cripted+characterOf.get(sum);
+    }
+    return cripted;
+}
+
+function decrypt(stringa, key){
+    let decripted='';
+    for(let i=0;i<stringa.length;i++){
+        let sum = (indexOf.get(stringa[i])-indexOf.get(key[i%key.length])+alphabet.length)%alphabet.length;
+        decripted = decripted + characterOf.get(sum);
+    }
+    return decripted;
+}
+
+
+const toCrypt= generatePassword(10);
+const chiave = 'G19l1@&F3der|C0';
+const criptata=crypt(toCrypt,chiave);
+const decriptata=decrypt(criptata,chiave);
 
 
