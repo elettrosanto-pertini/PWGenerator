@@ -78,10 +78,42 @@ function decrypt(stringa, key){
     return decripted;
 }
 
+const generateBtn=document.getElementById('PWG-btn');
+const generatedPWEl=document.getElementById('generatedPW');
+const cryptBtnEl = document.getElementById('cryptBtn');
+const decryptBtnEl = document.getElementById('decryptBtn');
+const refreshBtnEl=document.getElementById('refreshBtn');
+let lunghezzaPwEl=document.getElementById('lunghezzaPW');
 
-const toCrypt= generatePassword(10);
-const chiave = 'G19l1@&F3der|C0';
-const criptata=crypt(toCrypt,chiave);
-const decriptata=decrypt(criptata,chiave);
+generateBtn.addEventListener('click', ()=>{
+    let pw = generatePassword(lunghezzaPwEl.value);
+    document.getElementById('generatedPW').textContent=pw;
+    //document.getElementById('generatedPW').classList="box";
+});
+
+cryptBtnEl.addEventListener('click', event=>{
+    let tocrypt = document.getElementById('userInput');
+    let givenKey = document.getElementById('userKey');
+    const criptedPw = crypt(tocrypt.value,givenKey.value);
+    document.getElementById('PWTradotta').textContent=criptedPw;
+    //document.getElementById('PWTradotta').classList="input is-small";
+    tocrypt.value='';
+    givenKey.value='';
+    generatedPWEl.textContent='';
+});
+
+decryptBtnEl.addEventListener('click',()=>{
+    let todecrypt = document.getElementById('userInput');
+    let givenKey = document.getElementById('userKey');
+    const decriptedPw = decrypt(todecrypt.value,givenKey.value);
+    document.getElementById('PWTradotta').textContent=decriptedPw;
+    //document.getElementById('PWTradotta').classList="input is-small";
+    todecrypt.value='';
+    givenKey.value='';
+});
+
+refreshBtnEl.addEventListener('click', ()=>{
+    window.location.reload();
+});
 
 

@@ -1,0 +1,50 @@
+html{
+    overflow:auto;
+}
+
+body{
+    width:400px;
+    height:fit-content;
+    padding:20px;
+    border:1px solid red;
+}
+
+.textBlock{
+    border:1px solid #ccc;
+    min-height:26px;
+}
+
+.boxDiTesto{
+    inline-size: 90%;
+    overflow-wrap: break-word;
+}
+
+.navigation{
+    display:flex;
+    flex-direction: row;
+    justify-content:flex-end;
+}
+
+.popup{
+    min-height:500px;
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows:auto 50%;
+    grid-template-areas:
+    "t t"
+    "b b";
+}
+
+.top_shelf{
+    grid-area:t;
+}
+
+.bottom_shelf{
+    grid-area:b;
+}
+
+.horizontalBlock{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+}

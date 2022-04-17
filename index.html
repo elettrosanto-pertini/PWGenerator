@@ -4,10 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="stilePWG.css">
     <title>Provaaaa</title>
 </head>
 <body>
-    <p> Aiutoooo </p>
-    <script src="generatori/generatore.js"></script>
+    <div class="navigation"><a class="button is-warning is-small" id="refreshBtn">Refresh</a></div>
+
+    <div class="popup">
+
+        <div class="top_shelf">
+            <h3 class="title is-5">Genera Password</h3>
+            <label for="lunghezzaPW"> 15-200 caratteri (consigliato)</label>
+            <input type="number" name="lunghezzaPW" id="lunghezzaPW" min="15" max="200">
+            <p id="generatedPW" class="boxDiTesto"></p>
+            <button class="button is-success is-small mt-2" id="PWG-btn">Genera</button>
+        </div>
+
+        <div class="bottom_shelf">
+            <span class="title is-5">cripta / decripta</span>
+            <input id="userInput" class="input is-small my-2" placeholder="password">
+            <input id="userKey" class="input is-small mb-2" placeholder="key">
+            <p id="PWTradotta" class="boxDiTesto"></p>
+            <div class="horizontalBlock mt-2">
+                <button class="button is-small is-success" id="cryptBtn">cripta</button>
+                <button class="button is-small is-info" id="decryptBtn">decripta</button>
+            </div>
+        </div>
+
+    </div>
+    
+
+
+    <script src="generatore.js"></script>
 </body>
 </html>
